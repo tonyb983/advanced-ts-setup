@@ -18,10 +18,23 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /\.yjs$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          formatter: require('eslint-formatter-pretty'),
+          emitError: true,
+          emitWarning: true,
+          fix: true,
+        },
+      },
+      {
         test: /\.ts/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      }, {
+      },
+      {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {

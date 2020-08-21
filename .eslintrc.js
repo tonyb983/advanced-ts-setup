@@ -35,7 +35,8 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
     parserOptions: {
-      'project': './tsconfig.json'
+      project: './tsconfig.json',
+      extraFileExtensions: ['json', 'js', 'txt', '<text>']
     }
   },
 
@@ -70,12 +71,20 @@ module.exports = {
     ],
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
     'no-prototype-builtins': 'off',
+    // Personal preference, I like private variables ending in underscores.
     'no-underscore-dangle': 'off',
-    // End Standard ==================================================
+    'spaced-comment': 'off',
+    // End Standard  = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    // ===============================================================
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // import Rules
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    'import/prefer-default-export': 'off',
+    // End import  = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // Typescript Rules
-    // ===============================================================
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // Makes no sense to allow type inferrence for expression parameters, but require typing the response
     '@typescript-eslint/explicit-function-return-type': [
       'error',
@@ -120,11 +129,12 @@ module.exports = {
       { functions: false, classes: true, variables: true, typedefs: true },
     ],
     '@typescript-eslint/class-literal-property-style': ["error", "fields"],
-    // End Typescript ================================================
+    '@typescript-eslint/member-ordering': 'off',
+    // End Typescript  = = = = = = = = = = = = = = = = = = = = = = = =
 
-    // ===============================================================
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // Unicorn Rules (Default Values)
-    // ===============================================================
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     'unicorn/better-regex': 'error',
     'unicorn/catch-error-name': 'error',
     'unicorn/consistent-function-scoping': 'error',
@@ -184,11 +194,11 @@ module.exports = {
     'unicorn/prevent-abbreviations': 'off', // default value 'error'
     'unicorn/string-content': 'off',
     'unicorn/throw-new-error': 'error',
-    // End Unicorn ===================================================
+    // End Unicorn = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    // ===============================================================
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // JSDoc Rules (Default Values)
-    // ===============================================================
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     "jsdoc/check-alignment": 1, // Recommended
     "jsdoc/check-examples": 1,
     "jsdoc/check-indentation": 1,
@@ -199,11 +209,11 @@ module.exports = {
     "jsdoc/implements-on-classes": 1, // Recommended
     "jsdoc/match-description": 1,
     "jsdoc/newline-after-description": 1, // Recommended
-    "jsdoc/no-types": 1,
+    "jsdoc/no-types": 0, // Recommended 1
     "jsdoc/no-undefined-types": 1, // Recommended
     "jsdoc/require-description": 1,
     "jsdoc/require-description-complete-sentence": 1,
-    "jsdoc/require-example": 1,
+    "jsdoc/require-example": 0,
     "jsdoc/require-hyphen-before-param-description": 1,
     "jsdoc/require-jsdoc": 1, // Recommended
     "jsdoc/require-param": 1, // Recommended
@@ -215,7 +225,7 @@ module.exports = {
     "jsdoc/require-returns-description": 1, // Recommended
     "jsdoc/require-returns-type": 1, // Recommended
     "jsdoc/valid-types": 1 // Recommended
-    // End JSDoc ===================================================
+    // End JSDoc = = = = = = = = = = = = = = = = = = = = = = = = = = =
   },
   overrides: [
     {
